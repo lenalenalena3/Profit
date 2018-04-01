@@ -7,7 +7,7 @@ import static stepDefinition.DepSave.*;
 
 public class Step {
     static WebDriver webdr;
-
+//шаги
     @Дано("^открыт браузер и осуществлен переход по ссылке$")
     public void openBrowser() throws Throwable {
         webdr = getDriver();
