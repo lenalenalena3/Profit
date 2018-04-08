@@ -5,9 +5,10 @@ import static junit.framework.TestCase.assertEquals;
 import org.openqa.selenium.WebDriver;
 import static stepDefinition.DepSave.*;
 
+
 public class Step {
     static WebDriver webdr;
-//шаги
+
     @Дано("^открыт браузер и осуществлен переход по ссылке$")
     public void openBrowser() throws Throwable {
         webdr = getDriver();
@@ -32,12 +33,12 @@ public class Step {
 
     @И("^пользователь устанавливает срок вклада \"([^\"]*)\"$")
     public void setDays(String days) throws Throwable {
-        setupInputSrok("Срок вклада в днях",days,webdr);
+        pagePrivateClient.setupInputSrok(days,webdr);
     }
 
     @И("^пользователь устанавливает сумму вклада \"([^\"]*)\"$")
     public void setSum(String sum) throws Throwable {
-        setupInputSum("Сумма вклада",sum,webdr);
+        pagePrivateClient.setupInputSum(sum,webdr);
     }
 
     @И("^пользователь устанавливает параметр \"([^\"]*)\" значением \"([^\"]*)\"$")
@@ -47,7 +48,7 @@ public class Step {
 
     @И("^нажимает кнопку Рассчитать$")
     public void clickButtonCalc() throws Throwable {
-        buttonCalcClick(webdr);
+        pagePrivateClient.buttonCalcClick(webdr);
     }
 
     @Тогда("^параметр \"([^\"]*)\" равен \"([^\"]*)\"$")

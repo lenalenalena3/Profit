@@ -1,19 +1,20 @@
 package stepDefinition;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.PagePrivateClient;
 
 
 public class DepSave {
+
     static WebDriver driver;
     private final static Long TIMEOUT=10L;
+    public static PagePrivateClient pagePrivateClient;
 
     public static WebDriver getDriver() {
         //	System.setProperty("webdriver.ie.driver", "C:\\ADocMilena\\Autotest\\_Lib\\IEDriverServer_x64_3.8.0\\IEDriverServer.exe");
@@ -21,6 +22,7 @@ public class DepSave {
         System.setProperty("webdriver.chrome.driver", "C:\\ADocMilena\\Autotest\\_Lib\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+        pagePrivateClient = new PagePrivateClient(driver);
         return  driver;
     }
 
@@ -53,28 +55,28 @@ public class DepSave {
         element.click();
     }
     //установить сумму вклада
-    public static void setupInputSum (String input, String sum, WebDriver driver) {
-        String my_sum="(//label[text()='"+input+"'])[1]/following-sibling::*/input";
-        WebElement element=driver.findElement(By.xpath(my_sum));
-        new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
-        element.clear();
-        element.sendKeys(sum);
-        element.sendKeys(Keys.TAB);
-    }
+   // public static void setupInputSum (String input, String sum, WebDriver driver) {
+    //    String my_sum="(//label[text()='"+input+"'])[1]/following-sibling::*/input";
+     //   WebElement element=driver.findElement(By.xpath(my_sum));
+      //  new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
+       // element.clear();
+       // element.sendKeys(sum);
+       // element.sendKeys(Keys.TAB);
+   // }
     //установить срок вклада
-    public static void setupInputSrok (String input, String srok, WebDriver driver) {
-        String my_srok="(//label[text()='"+input+"'])[1]/following-sibling::*/input";
-        WebElement element=driver.findElement(By.xpath(my_srok));
-        new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
-        element.clear();
-        Actions builder= new Actions(driver);
-        builder.click(element).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(srok).build().perform();
-    }
+  //  public static void setupInputSrok (String input, String srok, WebDriver driver) {
+    //    String my_srok="(//label[text()='"+input+"'])[1]/following-sibling::*/input";
+      //  WebElement element=driver.findElement(By.xpath(my_srok));
+       // new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
+        //element.clear();
+       // Actions builder= new Actions(driver);
+       // builder.click(element).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(srok).build().perform();
+   // }
     //нажать кнопку Рассчитать
-    public static void buttonCalcClick (WebDriver driver) {
+   /* public static void buttonCalcClick (WebDriver driver) {
         WebElement element=driver.findElement(By.xpath("(//button[@type='submit'])[1]"));
         element.click();
-    }
+    }*/
     //получить значение поля на графике
     public static String getValueGraph (String name, WebDriver driver) {
         WebElement element=driver.findElement(By.xpath("(//div[@class='box-open-data']//p[text()='"+name+"'])[1]/span"));
