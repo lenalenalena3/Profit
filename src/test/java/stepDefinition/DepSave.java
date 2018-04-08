@@ -32,12 +32,14 @@ public class DepSave {
         new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(menuRazdel));
         menuRazdel.click();
     }
+
     //выбрать меню
     public static void selectMenu (String menu, WebDriver driver) {
         WebElement menuDepSave =driver.findElement(By.xpath("(//a[text()='"+menu+"'])[1]"));
         new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(menuDepSave));
         menuDepSave.click();
     }
+
     //установить валюту
     public static void setupVal (String val, WebDriver driver) {
         WebElement element=driver.findElement(By.xpath("(//label[text()='Валюта вклада'])[1]/following-sibling::*/select"));
@@ -45,6 +47,7 @@ public class DepSave {
         Select select = new Select(element);
         select.selectByVisibleText(val);
     }
+
     //установить радиобаттон
     public static void setupRadiobox (String name, String value, WebDriver driver) {
         //Капитализация процентов, Досрочное закрытие вклада, Вкладчик - пенсионер
@@ -54,29 +57,7 @@ public class DepSave {
         new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
-    //установить сумму вклада
-   // public static void setupInputSum (String input, String sum, WebDriver driver) {
-    //    String my_sum="(//label[text()='"+input+"'])[1]/following-sibling::*/input";
-     //   WebElement element=driver.findElement(By.xpath(my_sum));
-      //  new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
-       // element.clear();
-       // element.sendKeys(sum);
-       // element.sendKeys(Keys.TAB);
-   // }
-    //установить срок вклада
-  //  public static void setupInputSrok (String input, String srok, WebDriver driver) {
-    //    String my_srok="(//label[text()='"+input+"'])[1]/following-sibling::*/input";
-      //  WebElement element=driver.findElement(By.xpath(my_srok));
-       // new WebDriverWait(driver,TIMEOUT).until(ExpectedConditions.visibilityOf(element));
-        //element.clear();
-       // Actions builder= new Actions(driver);
-       // builder.click(element).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(srok).build().perform();
-   // }
-    //нажать кнопку Рассчитать
-   /* public static void buttonCalcClick (WebDriver driver) {
-        WebElement element=driver.findElement(By.xpath("(//button[@type='submit'])[1]"));
-        element.click();
-    }*/
+
     //получить значение поля на графике
     public static String getValueGraph (String name, WebDriver driver) {
         WebElement element=driver.findElement(By.xpath("(//div[@class='box-open-data']//p[text()='"+name+"'])[1]/span"));
