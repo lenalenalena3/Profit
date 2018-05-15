@@ -1,6 +1,5 @@
 package pages;
 
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,9 +32,18 @@ public class PagePrivateClient {
     @FindBy(how = How.XPATH, using ="(//label[text()='Сумма вклада'])[1]/following-sibling::*/input")
     private WebElement summ;
 
-   //нажать кнопку Рассчитать
+    @FindBy(how = How.XPATH, using ="//a[@title='Закрыть предупреждение']")
+    private WebElement cookie;
+
+
+    //нажать кнопку Рассчитать
     public void buttonCalcClick (WebDriver driver) {
         calc.click();
+    }
+
+    //закрыть сообщение об куки
+    public void messageClose(WebDriver driver) {
+        cookie.click();
     }
 
     //установить валюту

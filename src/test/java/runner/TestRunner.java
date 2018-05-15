@@ -1,17 +1,17 @@
 package runner;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-@RunWith(Cucumber.class)
 
-@CucumberOptions(features = {"src/test/java/features"},
-        glue = "stepDefinition",
-        tags="@123",
-        plugin = {"html:target/cucumber-html-report"}
-        )
 
+@Suite.SuiteClasses({
+        Test1.class,
+        Test2.class
+})
+
+@RunWith(Suite.class)
 public class TestRunner {
-
 }
+
+
